@@ -1,0 +1,6 @@
+h1 Pages#index
+p Find me in app/views/pages/index.html.slim
+
+- @essays.each do |essay|
+  .essay
+    h2 = link_to essay.title, essay_path(essay)
