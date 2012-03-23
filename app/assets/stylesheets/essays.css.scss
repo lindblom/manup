@@ -1,3 +1,9 @@
 // Place all the styles related to the essays controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+article.essay-front-page {
+	h1 {
+		font-size: 1.5em;
+	}
+}

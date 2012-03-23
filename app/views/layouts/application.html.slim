@@ -1,7 +1,8 @@
 doctype 5
-html
+html lang="sv"
   head
     title = content_for?(:title) ? yield(:title) : "ManUp!"
+    meta charset="UTF-8"
     - if content_for?(:description)
       meta name="description" content="#{yield :description}"
     = stylesheet_link_tag    "application", :media => "all"

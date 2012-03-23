@@ -2,8 +2,9 @@
 
 FactoryGirl.define do
   factory :essay do
-    title "Titeln"
-    body "Texten"
-    association :category
+    sequence :body do |n|
+      "# title#{n}\nthe ingress#{n}\n\nsome more text."
+    end
+    published true
   end
 end

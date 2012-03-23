@@ -1,0 +1,6 @@
+== '<div class="row">' if (index % 3) == 0
+article.essay-front-page.four.columns
+  header
+    h1 = link_to essay.title, essay_path(essay)
+  p = essay.ingress
+== "</div>" if (index % 3) == 2

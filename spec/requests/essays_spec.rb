@@ -7,9 +7,16 @@ describe "Essays" do
     essay
   end
   
-  it "should be shown on homepage" do
-    visit root_path
-    page.should have_content(essay.title)
+  context "on homepage" do
+    it "should show title" do
+      visit root_path
+      page.should have_content(essay.title)
+    end
+    
+    it "should show ingress" do
+      visit root_path
+      page.should have_content(essay.ingress)
+    end
   end
   
   it "should be linked from front page" do
@@ -28,7 +35,7 @@ describe "Essays" do
     end
     
     it "should show the body text" do
-      page.should have_content(essay.body)
+      page.should have_content(essay.ingress)
     end
   end
 end

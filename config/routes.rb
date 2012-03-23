@@ -1,7 +1,6 @@
 ManUp::Application.routes.draw do
-  get "essays/show"
-
   root to: 'pages#index'
   
-  resources :essays
+  resources :essays, only: :show
+  
 end

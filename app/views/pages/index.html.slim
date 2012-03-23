@@ -1,6 +1,9 @@
-h1 Pages#index
-p Find me in app/views/pages/index.html.slim
+.row
+  header
+    h1 Pages#index
+    p Find me in app/views/pages/index.html.slim
 
-- @essays.each do |essay|
-  .essay
-    h2 = link_to essay.title, essay_path(essay)
+
+
+- @essays.each_with_index do |essay, index|
+  == render partial: "essays/essays_grid_3", locals: {essay: essay, index: index}

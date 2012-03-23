@@ -21,6 +21,7 @@ end
 
 gem 'zurb-foundation'
 gem 'slim-rails'
+gem 'rdiscount'
 gem 'jquery-rails'
 
 group :test, :development do
