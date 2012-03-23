@@ -1,6 +1,7 @@
 require "spec_helper"
 
 describe "Essays(as admin)" do
+  let(:essay) { Factory(:essay) }
   it "can be created" do
     visit new_admin_essay_path
     fill_in "Body", with: "# Title\nThis is the body"
@@ -11,6 +12,12 @@ describe "Essays(as admin)" do
   it "cant be created without valid data" do
     visit new_admin_essay_path
     click_button "Add"
+    Essay.count.should eql(0)
+  end
+  
+  it "can be deleted" do
+    visit essay_path(essay)
+    click_link "Delete"
     Essay.count.should eql(0)
   end
   
