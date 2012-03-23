@@ -11,4 +11,9 @@ html lang="sv"
 
   body
     .container
+      header
+        nav
+          ul
+            li = link_to "Hem", root_path
+            li.admin-item = link_to "Skapa en essay", new_admin_essay_path
       = yield

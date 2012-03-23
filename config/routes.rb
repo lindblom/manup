@@ -3,4 +3,8 @@ ManUp::Application.routes.draw do
   
   resources :essays, only: :show
   
+  namespace :admin do
+    resources :essays
+  end
+  
 end

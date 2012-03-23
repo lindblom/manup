@@ -1,9 +1,10 @@
 - essay = essays_grid_3
 - essay_counter = essays_grid_3_counter
+- last = (essay_counter + 1) == total
 
 == '<div class="row">' if (essay_counter % 3) == 0
 article.essay-front-page.four.columns
   header
     h1 = link_to essay.title, essay_path(essay)
   p = essay.ingress
-== "</div>" if (essay_counter + 1) == total || (essay_counter % 3) == 2
+== "</div>" if last || (essay_counter % 3) == 2

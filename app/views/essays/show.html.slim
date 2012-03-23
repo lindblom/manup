@@ -1,4 +1,7 @@
 - set_title @essay.title
 
 article.row
+  nav
+    ul
+      li = link_to "Edit", edit_admin_essay_path(@essay)
   == @essay.to_html
