@@ -8,7 +8,12 @@ class Admin::EssaysController < ApplicationController
   end
   
   def destroy
-    
+    @essay = Essay.find_by_slug(params[:id])
+    if @essay.destroy
+      redirect_to root_path
+    else
+      redirect_to @essay
+    end
   end
   
   def update
