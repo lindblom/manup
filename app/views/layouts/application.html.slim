@@ -11,9 +11,21 @@ html lang="sv"
 
   body
     .container
-      header
+      header.row
         nav
           ul
             li = link_to "Hem", root_path
             li.admin-item = link_to "Skapa en essay", new_admin_essay_path
+      
+      - if flash.notice
+        .row.alert
+          = flash.notice
+          
+      - if flash.alert
+        .row.alert
+          = flash.alert
+      
       = yield
+      
+      = params
+      = "ENV #{ENV["admin_user"]}"

@@ -34,4 +34,7 @@ ManUp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  ENV['admin_user'] = "admin"
+  ENV['admin_password'] = "foobar"
 end
