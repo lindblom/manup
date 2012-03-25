@@ -18,16 +18,16 @@ html lang="sv"
             - if admin?
               li.admin-item = link_to "Skapa en essay", new_admin_essay_path
               li.admin-item = link_to "Logga ut", logout_path, method: :delete
-      
+    
+    .container
       - if flash.notice
-        .row.alert
+        .row.alert-box
           = flash.notice
+          a.close &times;
           
       - if flash.alert
-        .row.alert
+        .row.alert-box.error
           = flash.alert
+          a.close &times;
       
       = yield
-      
-      = params
-      = "ENV #{ENV["admin_user"]}"

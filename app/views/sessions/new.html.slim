@@ -1,6 +1,7 @@
-= form_for :login, url: login_path do |f|
-  = f.label :username
-  = f.text_field :username
-  = f.label :password
-  = f.password_field :password
-  = f.submit "Logga in"
+.row
+  = form_for :login, url: login_path, html: {:class => "nice"} do |f|
+    = f.label           :username
+    = f.text_field      :username, :class => "input-text oversize"
+    = f.label           :password
+    = f.password_field  :password, :class => "input-text oversize"
+    = f.submit "Logga in"
