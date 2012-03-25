@@ -37,5 +37,9 @@ describe "Essays" do
     it "should show the body text" do
       page.should have_content(essay.ingress)
     end
+    
+    it "should not show admin functions" do
+      page.should_not have_content("Edit")
+    end
   end
 end
