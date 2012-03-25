@@ -3,6 +3,10 @@ require "spec_helper"
 describe "Essays(as admin)" do
   let(:essay) { Factory(:essay) }
   
+  before :each do
+    admin_login
+  end
+  
   it "can be created" do
     visit new_admin_essay_path
     fill_in "Body", with: "# Title\nThis is the body"

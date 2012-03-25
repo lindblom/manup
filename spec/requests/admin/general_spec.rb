@@ -29,10 +29,7 @@ describe "As admin" do
   
   context "and logged in" do
     before :each do
-      visit login_path
-      fill_in "Username", with: ENV["admin_user"]
-      fill_in "Password", with: ENV["admin_password"]
-      click_button "Logga in"
+      admin_login
     end
     
     it "you should see the admin menu items" do

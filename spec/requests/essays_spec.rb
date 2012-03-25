@@ -25,6 +25,11 @@ describe "Essays" do
     current_path.should == essay_path(essay)
   end
   
+  it "should not be able to edit" do
+    visit edit_admin_essay_path(essay)
+    current_path.should eql(login_path)
+  end
+  
   context "when viewing" do
     before :each do
       visit essay_path(essay)
@@ -39,7 +44,7 @@ describe "Essays" do
     end
     
     it "should not show admin functions" do
-      page.should_not have_content("Edit")
+      page.should_not have_css(".admin-item")
     end
   end
 end

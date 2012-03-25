@@ -1,4 +1,6 @@
 class Admin::EssaysController < ApplicationController
+  before_filter :require_admin
+  
   def new
     @essay = Essay.new
   end
