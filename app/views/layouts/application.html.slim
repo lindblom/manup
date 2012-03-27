@@ -18,6 +18,7 @@ html lang="sv"
             li = link_to "Resurser", resources_path
             - if admin?
               li.admin-item = link_to "Skapa en essay", new_admin_essay_path
+              li.admin-item = link_to "Lägg till resurs", root_path
               li.admin-item = link_to "Logga ut", logout_path, method: :delete
     
     .container
