@@ -2,9 +2,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  before_filter :ensure_domain
+  
   helper_method :admin?
   
   private
+  
+  def ensure_domain
+    redirect_to ENV['DOMAIN'] if ENV['DOMAIN'] && request.host != ENV['DOMAIN']
+  end
+  
   def admin?
     session[:is_admin]
   end
