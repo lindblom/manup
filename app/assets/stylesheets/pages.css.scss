@@ -2,12 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$menu-bg-color: #2D2A52;
+$body-bg-color: #FFF5F1;
+
 body {
-	font-family: Georgia
+	font-family: Georgia;
+	background-color: $body-bg-color;
+}
+
+div#menu-container {
+	background-color: $menu-bg-color;
+}
+
+div#main-container {
+	
 }
 
 h1, h2 {
 	font-family: 'Kaushan Script', cursive;
+	color: #E54D2E;
 }
 
 header#main {

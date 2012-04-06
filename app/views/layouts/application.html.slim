@@ -11,7 +11,7 @@ html lang="sv"
     == render(partial: "shared/ga") if Rails.env.production? 
 
   body
-    .container
+    #menu-container.container
       header.row
         nav
           ul
@@ -23,7 +23,7 @@ html lang="sv"
               li.admin-item = link_to "Lägg till resurs", new_admin_resource_path
               li.admin-item = link_to "Logga ut", logout_path, method: :delete
     
-    .container
+    #main-container.container
       - if flash.notice
         .row.alert-box
           = flash.notice
