@@ -12,6 +12,12 @@ describe "Essays" do
     page.should have_css("a", text: "Artiklar")
   end
   
+  it "unpublished should not be showing on essays_path" do
+    unpublished_essay = Factory(:essay, {published: false})
+    visit essays_path
+    page.should_not have_content(unpublished_essay.title)
+  end
+  
   it "should all be showing on essays_path" do
     essays = 5.times.map { Factory(:essay) }
     essays << essay

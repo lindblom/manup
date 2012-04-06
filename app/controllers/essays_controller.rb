@@ -4,6 +4,6 @@ class EssaysController < ApplicationController
   end
   
   def index
-    @essays = Essay.all
+    @essays = Essay.published
   end
 end
