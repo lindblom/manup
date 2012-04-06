@@ -1,9 +1,9 @@
 - set_title @essay.title
 
-article.row
-  nav
-    ul
-      - if admin?
+article#essay-full.row
+  - if admin?
+    nav
+      ul
         li.admin-item = link_to "Edit", edit_admin_essay_path(@essay)
         li.admin-item = link_to "Delete", admin_essay_path(@essay), method: :delete
   == @essay.to_html

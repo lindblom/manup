@@ -7,7 +7,32 @@ describe "Essays" do
     essay
   end
   
+  it "should be included in main menu" do
+    visit root_path
+    page.should have_css("a", text: "Artiklar")
+  end
+  
+  it "should all be showing on essays_path" do
+    essays = 5.times.map { Factory(:essay) }
+    essays << essay
+    visit essays_path
+    essays.each do |essay|
+      page.should have_content(essay.title)
+    end
+  end
+  
+  it "should not be able to edit" do
+    visit edit_admin_essay_path(essay)
+    current_path.should eql(login_path)
+  end
+  
   context "on homepage" do
+    it "should show total count" do
+      3.times { Factory(:essay) }
+      visit root_path
+      page.should have_css("#essay-count", text: Essay.count.to_s)
+    end
+    
     it "should show title" do
       visit root_path
       page.should have_content(essay.title)
@@ -17,17 +42,12 @@ describe "Essays" do
       visit root_path
       page.should have_content(essay.ingress)
     end
-  end
-  
-  it "should be linked from front page" do
-    visit root_path
-    click_link essay.title
-    current_path.should == essay_path(essay)
-  end
-  
-  it "should not be able to edit" do
-    visit edit_admin_essay_path(essay)
-    current_path.should eql(login_path)
+    
+    it "should be linked from front page" do
+      visit root_path
+      click_link essay.title
+      current_path.should == essay_path(essay)
+    end
   end
   
   context "when viewing" do

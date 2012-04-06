@@ -1,0 +1,13 @@
+.row
+  h1 Lägg till en resurs
+  
+  = form_for @resource, url: admin_resources_path do |f|
+    = f.label :title, "Titel"
+    = f.text_field :title
+    = f.label :description, "Beskrivning"
+    = f.text_area :description
+    = f.label :url
+    = f.text_field :url
+    = f.label :category, "Kategori"
+    = f.select :category, ["Podcast", "Bok"]
+    = f.submit "Lägg till"

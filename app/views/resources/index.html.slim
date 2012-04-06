@@ -3,6 +3,20 @@ section
     h1 Resurser
     p Lite snick-snack om resureserna
 
-  h2.row Podcasts
+  section#podcasts.row
+    header
+      h1.row Podcasts
+    ul
+      - @podcasts.each do |podcast|
+        li 
+          = podcast.title
+          =' link_to("Ta bort", admin_resource_path(podcast), method: :delete) if admin?
 
-  h2.row Böcker
+  section#books.row
+    header
+      h1.row Böcker
+    ul
+      - @books.each do |book|
+        li
+          = book.title
+          =' link_to("Ta bort", admin_resource_path(book), method: :delete) if admin?

@@ -15,10 +15,11 @@ html lang="sv"
         nav
           ul
             li = link_to "Hem", root_path
+            li = link_to "Artiklar", essays_path
             li = link_to "Resurser", resources_path
             - if admin?
               li.admin-item = link_to "Skapa en essay", new_admin_essay_path
-              li.admin-item = link_to "Lägg till resurs", root_path
+              li.admin-item = link_to "Lägg till resurs", new_admin_resource_path
               li.admin-item = link_to "Logga ut", logout_path, method: :delete
     
     .container
@@ -33,3 +34,6 @@ html lang="sv"
           a.close &times;
       
       = yield
+      
+      footer.row
+        ' Detta är en totally awesome footer!

@@ -3,6 +3,12 @@ require 'spec_helper'
 describe Essay do
   let(:essay) { Factory.build(:essay) }
   
+  it "should scope latest" do
+    essay = Factory(:essay)
+    3.times { Factory(:essay) }
+    Essay.latest.should_not include(essay)
+  end
+  
   it "should extract title from body" do
     title = "title"
     essay.body = "# #{title}"
