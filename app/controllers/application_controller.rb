@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
   
   def ensure_domain
-    redirect_to ENV['DOMAIN'] if ENV['DOMAIN'] && request.host != ENV['DOMAIN']
+    redirect_to "http://#{ENV['DOMAIN']}#{request.path}" if ENV['DOMAIN'] && request.host != ENV['DOMAIN']
   end
   
   def admin?
