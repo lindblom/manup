@@ -9,6 +9,20 @@ describe Essay do
     Essay.latest.should_not include(essay)
   end
   
+  it "with scope latest should not include unpublished" do
+    essay = Factory(:essay, {published: false})
+    Essay.latest.should_not include(essay)
+  end
+  
+  it "should scope published" do
+    published_essays = 3.times.map { Factory(:essay) }
+    unpublished_essay = Factory(:essay, {published: false})
+    published_essays.each do |essay|
+      Essay.published.should include(essay)
+    end
+    Essay.published.should_not include(unpublished_essay)
+  end
+  
   it "should extract title from body" do
     title = "title"
     essay.body = "# #{title}"

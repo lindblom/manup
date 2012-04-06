@@ -27,10 +27,11 @@ describe "Essays" do
   end
   
   context "on homepage" do
-    it "should show total count" do
+    it "should show total published count" do
       3.times { Factory(:essay) }
+      Factory(:essay, {published: false})
       visit root_path
-      page.should have_css("#essay-count", text: Essay.count.to_s)
+      page.should have_css("#essay-count", text: Essay.published.count.to_s)
     end
     
     it "should show title" do

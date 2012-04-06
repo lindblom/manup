@@ -1,6 +1,7 @@
 class Essay < ActiveRecord::Base
   
-  scope :latest, order("created_at DESC").limit(3)
+  scope :published, where(published: true)
+  scope :latest, published.order("created_at DESC").limit(3)
   
   validates :body,  presence: true
   validates :slug,  presence: true,

@@ -14,6 +14,14 @@ describe "Essays(as admin)" do
     Essay.count.should eql(1)
   end
   
+  it "can be published" do
+    visit new_admin_essay_path
+    fill_in "Body", with: "# Title\nThis is the body"
+    check "Public"
+    click_button "Add"
+    Essay.published.count.should eql(1)
+  end
+  
   it "cant be created without valid data" do
     visit new_admin_essay_path
     click_button "Add"
