@@ -164,6 +164,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   factory_girl_rails
   jquery-rails
+  nokogiri
   pg
   rails (= 3.2.3)
   rdiscount
