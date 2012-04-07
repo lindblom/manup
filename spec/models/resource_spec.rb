@@ -19,5 +19,12 @@ describe Resource do
       Resource.books.count.should eql(1)
       Resource.books.should include book
     end
+    
+    it "the 3 latest" do
+      resources = 3.times.map { Factory(:book) }
+      Resource.latest.should_not include book
+      Resource.latest.should_not include podcast
+      resources.each { |resource| Resource.latest.should include resource }
+    end
   end
 end

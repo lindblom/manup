@@ -30,15 +30,14 @@ section
     h1 Senaste resurserna
   
   .row
-    .six.columns
+    #latest-podcasts.six.columns
       h2 Podcasts
       ul
-        li Podcast 1
-        li Podcast 2
-        li Podcast 3
-    .six.columns
+        - @podcasts.each do |podcast|
+          li = podcast.title
+      
+    #latest-books.six.columns
       h2 Böcker
       ul
-        li Bok 1
-        li Bok 2
-        li Bok 3
+        - @books.each do |book|
+          li = book.title

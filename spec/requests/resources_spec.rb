@@ -30,6 +30,26 @@ describe "Resources" do
       visit root_path
       page.should have_css("#podcast-count", text: Resource.podcasts.count.to_s)
     end
+    
+    it "should show the latest books" do
+      old_book = Factory(:book)
+      books = 3.times.map { Factory(:book) }
+      visit root_path
+      within("#latest-books") do
+        books.each { |book| page.should have_content(book.title) }
+        page.should_not have_content(old_book.title)
+      end
+    end
+    
+    it "should show the latest podcasts" do
+      old_podcast = Factory(:podcast)
+      podcasts = 3.times.map { Factory(:podcast) }
+      visit root_path
+      within("#latest-podcasts") do
+        podcasts.each { |podcast| page.should have_content(podcast.title) }
+        page.should_not have_content(old_podcast.title)
+      end
+    end
   end
   
   context "should contain" do

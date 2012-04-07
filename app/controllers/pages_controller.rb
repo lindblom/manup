@@ -3,7 +3,9 @@ class PagesController < ApplicationController
     @latest_essays = Essay.latest
     @essay_count = Essay.published.count
     @podcasts_count = Resource.podcasts.count
+    @podcasts = Resource.latest.podcasts
     @books_count = Resource.books.count
+    @books = Resource.latest.books
   end
   
   def sitemap
