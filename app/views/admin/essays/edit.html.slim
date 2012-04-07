@@ -1,6 +1,9 @@
-= form_for @essay, url: admin_essay_path(@essay) do |f|
-  = f.label :body
-  = f.text_area :body
-  = f.label :published, "Public"
-  = f.check_box :published
-  = f.submit "Update"
+.row
+  h1 Ändra artikeln
+
+  = form_for @essay, url: admin_essay_path(@essay) do |f|
+    = f.label :body
+    = f.text_area :body
+    = f.label :published, "Public"
+    = f.check_box :published
+    = f.submit "Update"
