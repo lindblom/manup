@@ -11,6 +11,16 @@ describe "Sitemap" do
       visit "/sitemap"
       page.should have_css("loc", text: root_url)
     end
+    
+    it "should include essays listing" do
+      visit "/sitemap"
+      page.should have_css("loc", text: essays_url)
+    end
+    
+    it "should include resources listing" do
+      visit "/sitemap"
+      page.should have_css("loc", text: resources_url)
+    end
   
     it "should include essays" do
       essay = Factory(:essay)
