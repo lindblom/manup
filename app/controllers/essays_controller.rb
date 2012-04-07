@@ -5,5 +5,6 @@ class EssaysController < ApplicationController
   
   def index
     @essays = Essay.published
+    @essays = Essay.all if admin?
   end
 end

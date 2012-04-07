@@ -4,7 +4,7 @@
 - essay_count_mod_3 = (essay_counter % 3)
 
 == '<div class="row">' if essay_count_mod_3 == 0
-article.essay-front-page.four.columns
+article.essay-front-page.four.columns class="#{"unpublished" unless essay.published? }"
   header
     h1 = link_to essay.title, essay_path(essay)
   p = essay.ingress

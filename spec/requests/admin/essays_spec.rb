@@ -34,6 +34,21 @@ describe "Essays(as admin)" do
     Essay.count.should eql(0)
   end
   
+  it "should all be showing on essays_path" do
+    essays = 5.times.map { Factory(:essay) }
+    essays << Factory(:essay, {published: false})
+    visit essays_path
+    essays.each do |essay|
+      page.should have_content(essay.title)
+    end
+  end
+  
+  it "should have unpublished class if unpublished on essays_path" do
+    essay = Factory(:essay, {published: false})
+    visit essays_path
+    page.should have_css("article.unpublished")
+  end
+  
   context "while editing" do
     it "can edit" do
       essay = Factory(:essay)
