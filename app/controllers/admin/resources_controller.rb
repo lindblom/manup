@@ -1,4 +1,7 @@
+#coding:UTF-8
 class Admin::ResourcesController < ApplicationController
+  before_filter :require_admin
+  
   def new
     @resource = Resource.new
   end
@@ -8,6 +11,19 @@ class Admin::ResourcesController < ApplicationController
       redirect_to resources_path, notice: "Din resurs har lagts till"
     else
       render :new
+    end
+  end
+  
+  def edit
+    @resource = Resource.find(params[:id])
+  end
+  
+  def update
+    @resource = Resource.find(params[:id])
+    if @resource.update_attributes(params[:resource])
+      redirect_to resources_path, notice: "Resursen är uppdaterad."
+    else
+      render :update
     end
   end
   

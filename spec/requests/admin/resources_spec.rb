@@ -39,6 +39,19 @@ describe "Resources (as admin)" do
     page.should have_content(title)
   end
   
+  it "should be editable" do
+    Factory(:podcast)
+    visit resources_path
+    within("#podcasts") do
+      click_link "Ändra"
+    end
+    new_title = "Ny Titel"
+    fill_in "Titel", with: new_title
+    click_button "Uppdatera"
+    page.should have_content("Resursen är uppdaterad")
+    page.should have_content(new_title)
+  end
+  
   it "should be deletable" do
     Factory(:podcast)
     visit resources_path

@@ -10,7 +10,9 @@ section
       - @podcasts.each do |podcast|
         li 
           = podcast.title
-          =' link_to("Ta bort", admin_resource_path(podcast), method: :delete) if admin?
+          - if admin?
+            =' link_to("Ändra", edit_admin_resource_path(podcast))
+            =' link_to("Ta bort", admin_resource_path(podcast), method: :delete)
 
   section#books.row
     header

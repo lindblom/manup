@@ -1,0 +1,13 @@
+.row
+  h1 Ändra resursen
+  
+  = form_for @resource, url: admin_resource_path(@resource) do |f|
+    = f.label :title, "Titel"
+    = f.text_field :title
+    = f.label :description, "Beskrivning"
+    = f.text_area :description
+    = f.label :url
+    = f.text_field :url
+    = f.label :category, "Kategori"
+    = f.select :category, [["Podcast", "Podcast"], ["Bok", "Book"]]
+    = f.submit "Uppdatera"
