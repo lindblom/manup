@@ -11,16 +11,32 @@ describe "Resources (as admin)" do
     page.should have_css(".admin-item", text: "Lägg till resurs")
   end
   
-  it "should be createable" do
+  it "podcasts should be createable" do
     visit root_path
     click_link "Lägg till resurs"
-    fill_in "Titel", with: "Resource 1"
+    title = "Resource 1"
+    fill_in "Titel", with: title
     fill_in "Beskrivning", with: "Description 1"
     fill_in "Url", with: "http://www.example.com"
     select "Podcast", from: "Kategori"
     click_button "Lägg till"
     Resource.count.should eql(1)
     page.should have_content("Din resurs har lagts till")
+    page.should have_content(title)
+  end
+  
+  it "books should be createable" do
+    visit root_path
+    click_link "Lägg till resurs"
+    title = "Resource 1"
+    fill_in "Titel", with: title
+    fill_in "Beskrivning", with: "Description 1"
+    fill_in "Url", with: "http://www.example.com"
+    select "Bok", from: "Kategori"
+    click_button "Lägg till"
+    Resource.count.should eql(1)
+    page.should have_content("Din resurs har lagts till")
+    page.should have_content(title)
   end
   
   it "should be deletable" do
