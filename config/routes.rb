@@ -7,8 +7,8 @@ ManUp::Application.routes.draw do
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
   
-  resources :essays, only: [:show, :index]
-  resources :resources
+  resources :essays, only: [:show, :index], path: "levnadsrelger"
+  resources :resources, path: "resurser"
   
   namespace :admin do
     resources :essays

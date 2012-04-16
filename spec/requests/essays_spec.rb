@@ -13,7 +13,7 @@ describe "Essays" do
   end
   
   it "unpublished should not be showing on essays_path" do
-    unpublished_essay = Factory(:essay, {published: false})
+    unpublished_essay = Factory(:essay, { published: false })
     visit essays_path
     page.should_not have_content(unpublished_essay.title)
   end
@@ -30,6 +30,11 @@ describe "Essays" do
   it "should not be able to edit" do
     visit edit_admin_essay_path(essay)
     current_path.should eql(login_path)
+  end
+  
+  it "should not be able to destroy" do
+    delete admin_essay_path(essay)
+    assert_redirected_to login_path
   end
   
   context "on homepage" do
